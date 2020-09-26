@@ -1,0 +1,21 @@
+FROM python
+LABEL MAINTAINER "Laurelwoods"
+
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get -y update && \
+    apt-get -y install nano && \
+    apt-get -y install systemd
+
+RUN pip install --upgrade pip && \
+    pip install django && \
+    pip install djangorestframework && \
+    pip install django-filter && \
+    pip install django-cors-headers && \
+    pip install psycopg2 \
+    pip install gunicorn
+
+RUN mkdir /home/laurelwoods_backend
+WORKDIR /home/laurelwoods_backend
+
+#CMD tail -f /dev/null
